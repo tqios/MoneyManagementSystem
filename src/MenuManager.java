@@ -14,32 +14,49 @@ public class MenuManager {
 			System.out.println("6. Exit");	
 			System.out.print("Select one number between 1-6: ");
 			num = input.nextInt();
-			switch(num) {
-			case 1:
-				System.out.print("date+time(YYMMddhhmm) : ");
-				int date = input.nextInt();
-				System.out.print("money: ");
-				int money = input.nextInt();
-				System.out.print("Payment method : ");
-				String PaymentMethod = input.next();
-				System.out.print("Location : ");
-				String Location = input.next();
-				System.out.print("Memo : ");
-				String Memo = input.next();
-				break;
-			case 2:
-				System.out.print("date+time(YYMMddhhmm) : ");
-				int date_del = input.nextInt();
-				break;
-			case 3:
-				System.out.print("date+time(YYMMddhhmm) : ");
-				int date_edit = input.nextInt();
-				break;
-			case 4:
-				System.out.print("date+time(YYMMddhhmm) : ");
-				int date_view = input.nextInt();
-				break;
-			}
+
+			if (num == 1) {
+				addSpending();
+			}if (num == 2) {
+				deleteSpending();
+			}if (num == 3) {
+				editSpending();
+			}if (num == 4) {
+				viewSpending();
+			}else {
+				continue;}
 		}
+	}
+	
+	public static void addSpending() {
+		Scanner input = new Scanner(System.in);
+		System.out.print("date+time(YYMMddhhmm) : ");
+		int date = input.nextInt();
+		System.out.print("money: ");
+		int money = input.nextInt();
+		System.out.print("Payment method : ");
+		String PaymentMethod = input.next();
+		System.out.print("Location : ");
+		String Location = input.next();
+		System.out.print("Memo : ");
+		String Memo = input.next();
+	}
+	
+	public static void deleteSpending() {
+		Scanner input = new Scanner(System.in);
+		System.out.print("date+time(YYMMddhhmm) : ");
+		int date = input.nextInt();	
+	}
+	
+	public static void editSpending() {
+		Scanner input = new Scanner(System.in);
+		System.out.print("date+time(YYMMddhhmm) : ");
+		int date = input.nextInt();	
+	}
+	
+	public static void viewSpending() {
+		Scanner input = new Scanner(System.in);
+		System.out.print("date+time(YYMMddhhmm) : ");
+		int date = input.nextInt();	
 	}
 }
