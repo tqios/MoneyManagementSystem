@@ -34,5 +34,37 @@ public class Spending {
 	public void printInfo() {
 		System.out.println("date: " + this.date + " | money: " + money + " | PaymentMethod: "
 				+ this.PaymentMethod + " | Location: " + this.Location + " | Memo: " + this.Memo);		
-	}	
+	}
+	
+	public void setDate(int date) {
+		this.date=date;
+	}public int getDate() {
+		return date;
+	}public void setMoney(int money) {
+		this.money=money;
+	}public int getMoney() {
+		return money;
+	}public void setPaymentMethod(String PaymentMethod) {
+		this.PaymentMethod = PaymentMethod;
+	}public String getPaymentMethod() {
+		return PaymentMethod;
+	}public void setLocation(String Location) {
+		this.Location = Location;
+	}public String getLocation() {
+		return Location;
+	}public void setMemo(String Memo) {
+		this.Memo = Memo;
+	}public String getMemo() {
+		return Memo;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

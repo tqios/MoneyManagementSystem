@@ -1,6 +1,8 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class SpendingManager {
+	ArrayList<Spending> spendings = new ArrayList<Spending>();
 	Spending spending;
 	Scanner input;
 	SpendingManager(Scanner input){
@@ -11,15 +13,16 @@ public class SpendingManager {
 	public void addSpending() {
 		spending = new Spending();
 		System.out.print("date+time(YYMMddhhmm) : ");
-		spending.date = input.nextInt();
+		spending.setDate(input.nextInt());
 		System.out.print("money: ");
-		spending.money = input.nextInt();
+		spending.setMoney(input.nextInt());
 		System.out.print("Payment method : ");
-		spending.PaymentMethod = input.next();
+		spending.setPaymentMethod(input.next());
 		System.out.print("Location : ");
-		spending.Location = input.next();
+		spending.setLocation(input.next());
 		System.out.print("Memo : ");
-		spending.Memo = input.next();
+		spending.setMemo(input.next());
+		spendings.add(spending);
 	}
 	
 	public void deleteSpending() {
@@ -28,17 +31,18 @@ public class SpendingManager {
 		if (spending == null) {
 			System.out.println("the spending has not been registered");
 			return;}
-		if (spending.date == date) {
-			spending = null;
-			System.out.println("the spending is deleted");}
-		else {
+		if (findIndex(date) >= 0) {
+			spendings.remove(findIndex(date));
+			System.out.println("the spending is deleted");
+		}else {
 			System.out.println("please enter a valid value.");}
 	}
 	
 	public void editSpending() {
 		System.out.print("date+time(YYMMddhhmm) : ");
 		int date = input.nextInt();	
-		if (spending.date == date) {
+		if (findIndex(date) >= 0) {
+			Spending spending = spendings.get(findIndex(date));
 			System.out.println("the spending to be edited is " + date);
 			System.out.println("What do you want to edit it?");
 			System.out.println("1. date\n2. money\n3. PaymentMethod\n4. Location\n5. Memo");
@@ -46,25 +50,24 @@ public class SpendingManager {
 			int n = input.nextInt();
 			switch(n) {
 			case(1):{
-				spending = new Spending();
 				System.out.print("date+time(YYMMddhhmm) : ");
-				spending.date = input.nextInt();
+				spending.setDate(input.nextInt());
 				break;
 			}case(2):{
 				System.out.print("money: ");
-				spending.money = input.nextInt();	
+				spending.setMoney(input.nextInt());	
 				break;
 			}case(3):{
 				System.out.print("Payment method : ");
-				spending.PaymentMethod = input.next();	
+				spending.setPaymentMethod(input.next());	
 				break;
 			}case(4):{
 				System.out.print("Location : ");
-				spending.Location = input.next();
+				spending.setLocation(input.next());
 				break;
 			}case(5):{
 				System.out.print("Memo : ");
-				spending.Memo = input.next();}
+				spending.setMemo(input.next());}
 			}			
 		}else {
 			System.out.println("please enter a valid value.");}
@@ -76,9 +79,30 @@ public class SpendingManager {
 		if (spending == null) {
 			System.out.println("the spending has not been registered");
 			return;}
-		if (spending.date == date) {
+		if (findIndex(date) >= 0) {
+			Spending spending = spendings.get(findIndex(date));
 			spending.printInfo();
 		}else {
 			System.out.println("please enter a valid value.");}
+		/*int i = spend.indexOf(date);
+		for(int i=0; i<spend.size(); i++) {
+			int x=spend.get(i).date;
+			printiInfo(x);}
+		//spend.get(i).printInfo();
+		
+		if (spending.date == date) {
+			spending.printInfo();
+		}else {
+			System.out.println("please enter a valid value.");}*/
+	}
+	
+	public int findIndex(int date) {
+		int idx= -1;
+		for (int i=0; i<spendings.size(); i++) {
+			if (date == spendings.get(i).date) {
+				idx = i;
+				break;}}
+
+		return idx;
 	}
 }
