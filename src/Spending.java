@@ -56,15 +56,5 @@ public class Spending {
 		this.Memo = Memo;
 	}public String getMemo() {
 		return Memo;
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	}	
 }

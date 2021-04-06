@@ -83,18 +83,7 @@ public class SpendingManager {
 			Spending spending = spendings.get(findIndex(date));
 			spending.printInfo();
 		}else {
-			System.out.println("please enter a valid value.");}
-		/*int i = spend.indexOf(date);
-		for(int i=0; i<spend.size(); i++) {
-			int x=spend.get(i).date;
-			printiInfo(x);}
-		//spend.get(i).printInfo();
-		
-		if (spending.date == date) {
-			spending.printInfo();
-		}else {
-			System.out.println("please enter a valid value.");}*/
-	}
+			System.out.println("please enter a valid value.");}}
 	
 	public int findIndex(int date) {
 		int idx= -1;
@@ -102,7 +91,6 @@ public class SpendingManager {
 			if (date == spendings.get(i).date) {
 				idx = i;
 				break;}}
-
 		return idx;
 	}
 }
