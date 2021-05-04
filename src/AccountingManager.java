@@ -2,7 +2,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import accounting.Accounting;
+import accounting.AccountingKind;
 import accounting.Credit;
+import accounting.Transfar;
 
 public class AccountingManager {
 	ArrayList<Accounting> accountings = new ArrayList<Accounting>();
@@ -17,20 +19,24 @@ public class AccountingManager {
 	public void addAccounting() {
 		
 		int kind = 0;
-		while (kind !=1 && kind != 2) {
-			System.out.println("1. Credit\n2. Cash");
-			System.out.println("Select num for Accounting kind: ");
+		while (kind !=1 && kind !=2 && kind !=3) {
+			System.out.println("1. Credit\n2. Cash\n3. Transfar");
+			System.out.print("Select num for Accounting kind: ");
 			kind = input.nextInt();
 			if (kind == 1) {
-				accounting = new Credit();
+				accounting = new Credit(AccountingKind.Credit);
 				accounting.getUserInput(input);
 				accountings.add(accounting);
 			}else if (kind == 2) {
-				accounting = new Accounting();
+				accounting = new Accounting(AccountingKind.Cash);
 				accounting.getUserInput(input);
 				accountings.add(accounting);
+			}else if (kind == 3) {
+			accounting = new Transfar(AccountingKind.Transfar);
+			accounting.getUserInput(input);
+			accountings.add(accounting);
 			}else {
-				System.out.println("");
+				System.out.println("Select num for Acounting kind between 1 and 3");
 				break;
 			}	
 			

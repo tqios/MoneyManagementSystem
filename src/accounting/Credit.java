@@ -5,15 +5,17 @@ import java.util.Scanner;
 public class Credit extends Accounting {
 	protected String bank ;
 
+	public Credit(AccountingKind kind) {
+		super(kind);
+	}
+	
 	public String getBank() {
 		return bank;
 	}
 	public void setBank(String bank) {
 		this.bank = bank;
 	}
-
-
-
+	
 	public void getUserInput(Scanner input) {
 		System.out.print("date+time(YYMMddhhmm) : ");
 		date = input.nextInt();
@@ -32,9 +34,20 @@ public class Credit extends Accounting {
 	}
 	
 	public void printInfo() {
-		System.out.println("date: " + this.date + " | amount: " + this.amount + 
+		String akind = "none";
+		switch(this.kind){
+		case Cash:
+			akind = "Cash";
+			break;
+		case Credit:
+			akind = "Credit";
+			break;
+		case Transfar:
+			akind = "Transfar";
+			break;
+		}
+		
+		System.out.println("kind: " + akind + " | date: " + this.date + " | amount: " + this.amount + 
 				" | Location: " + this.Location + " | Memo: " + this.Memo +
-				" | Bank: " + this.bank);
-}
-	
+				" | Bank: " + this.bank);}
 }

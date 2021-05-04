@@ -10,6 +10,11 @@ public class Accounting {
 	protected String Memo;
 	
 	public Accounting() {}
+	
+	public Accounting(AccountingKind kind) {
+		this.kind = kind;
+	}
+	
 
 	
 	public void getUserInput(Scanner input) {
@@ -23,8 +28,21 @@ public class Accounting {
 		System.out.print("Memo : ");
 		this.setMemo(input.next());}
 	
+	
 	public void printInfo() {
-			System.out.println("date: " + this.date + " | amount: " + this.amount + 
+		String akind = "none";
+		switch(this.kind){
+		case Cash:
+			akind = "Cash";
+			break;
+		case Credit:
+			akind = "Credit";
+			break;
+		case Transfar:
+			akind = "Transfar";
+			break;
+		}
+			System.out.println("kind: " + akind + " | date: " + this.date + " | amount: " + this.amount + 
 					" | Location: " + this.Location + " | Memo: " + this.Memo);
 	}
 	
