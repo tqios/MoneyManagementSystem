@@ -2,7 +2,7 @@ package accounting;
 
 import java.util.Scanner;
 
-public class Credit extends Accounting {
+public class Credit extends Accounting implements AccountingInput{
 	protected String bank ;
 
 	public Credit(AccountingKind kind) {

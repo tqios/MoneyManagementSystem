@@ -2,7 +2,7 @@ package accounting;
 
 import java.util.Scanner;
 
-public class Transfar extends Accounting {
+public class Transfar extends Accounting implements AccountingInput{
 	protected String receiver ;
 	
 	public Transfar(AccountingKind kind) {
