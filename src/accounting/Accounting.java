@@ -1,8 +1,9 @@
 package accounting;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public abstract class Accounting {
+public abstract class Accounting implements AccountingInput{
 	protected AccountingKind kind = AccountingKind.Cash;
 	public int date;
 	protected int amount;
@@ -30,7 +31,7 @@ public abstract class Accounting {
 		return date;
 	}
 
-	public void setDate(int date) {
+	public void setDate(int date){
 		this.date = date;
 	}
 
@@ -57,6 +58,65 @@ public abstract class Accounting {
 	public void setMemo(String memo) {
 		Memo = memo;
 	}
+	
+	public String getKindString() {
+		String akind = "none";
+		switch(this.kind){
+		case Cash:
+			akind = "Cash";
+			break;
+		case Credit:
+			akind = "Credit";
+			break;
+		case Transfar:
+			akind = "Transfar";
+			break;
+		default:
+		}
+		return akind;
+		
+	}
+	
+	public void setAccountingDate(Scanner input) {
+		int date = -1;
+		while(date == -1) {
+			try {
+				System.out.print("date+time(YYMMddhhmm) : ");
+				date = input.nextInt();
+				this.setDate(date);
+			}catch(InputMismatchException e) {
+				System.out.println("Please put an integer"); 
+				if (input.hasNext()) {
+					input.next();
+				}
+				date = -1;
+			}
+		}
+	}
+	public void setAccountingAmount(Scanner input) {
+		int amount = -1;
+		while(amount == -1) {
+			try {
+				System.out.print("amount: ");
+				amount = input.nextInt();
+				this.setAmount(amount);
+			}catch(InputMismatchException e) {
+				System.out.println("Please put an integer"); 
+				if (input.hasNext()) {
+					input.next();
+				}
+				amount = -1;
+			}
+		}
+	}
+	public void setAccountingLocation(Scanner input) {
+		System.out.print("Location : ");
+		this.setLocation(input.next());
+	}
+	public void setAccountingMemo(Scanner input) {
+		System.out.print("Memo : ");
+		this.setMemo(input.next());
+	}
+}
 
 	
-	}	
