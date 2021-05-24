@@ -1,9 +1,15 @@
 package accounting;
 
+import java.io.Serializable;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public abstract class Accounting implements AccountingInput{
+public abstract class Accounting implements AccountingInput, Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7553751942169260220L;
+	
 	protected AccountingKind kind = AccountingKind.Cash;
 	public int date;
 	protected int amount;

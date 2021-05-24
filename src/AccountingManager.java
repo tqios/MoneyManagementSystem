@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -9,11 +10,16 @@ import accounting.Credit;
 import accounting.Transfar;
 import accounting.AccountingInput;
 
-public class AccountingManager {
+public class AccountingManager implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8800217314767934609L;
+	
 	ArrayList<AccountingInput> accountings = new ArrayList<AccountingInput>();
 	Accounting accounting;
 	Credit income;
-	Scanner input;
+	transient Scanner input;
 	AccountingManager(Scanner input){
 		this.input = input;
 	}
