@@ -87,7 +87,6 @@ public class MenuManager {
 			e.printStackTrace();
 		}
 		return accountingManager;
-		
 	}
 	
 	public static void putObject(AccountingManager accountingManager, String filename) {
@@ -101,8 +100,6 @@ public class MenuManager {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
-
 		}
-		
 	}
 }
