@@ -1,3 +1,4 @@
+package manager;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -7,6 +8,7 @@ import java.io.ObjectOutputStream;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import gui.WindowFrame;
 import log.EventLogger;
 
 public class MenuManager {
@@ -14,10 +16,16 @@ public class MenuManager {
 	
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
+		
 		AccountingManager accountingManager = getObject("accountingmanager.ser");
 		if (accountingManager == null) {
 				accountingManager = new AccountingManager(input);
 		}
+		else {
+			accountingManager.setScanner(input);
+		}
+
+		WindowFrame frame = new WindowFrame(accountingManager);
 		selectMenu(input, accountingManager);
 		putObject(accountingManager, "accountingmanager.ser");
 	}
@@ -52,7 +60,7 @@ public class MenuManager {
 					continue;
 				}
 			}catch(InputMismatchException e) {
-				System.out.println("Please put an integer between 1 and 6!"); 
+				System.out.println("Please put an integer between 1~6!"); 
 				if (input.hasNext()) {
 					input.next();
 				}

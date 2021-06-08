@@ -1,3 +1,4 @@
+package manager;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -31,25 +32,28 @@ public class AccountingManager implements Serializable{
 		while (kind !=1 && kind !=2 && kind !=3) {
 			try {
 				System.out.println("1. Credit\n2. Cash\n3. Transfar");
-				System.out.print("Select num for Accounting kind: ");
+				System.out.print("Select num for Accounting kind between 1~3: ");
 				kind = input.nextInt();
 				if (kind == 1) {
 					accountingInput = new Credit(AccountingKind.Credit);
 					accountingInput.getUserInput(input);
 					accountings.add(accountingInput);
+					break;
 				}else if (kind == 2) {
 					accountingInput = new Cash(AccountingKind.Cash);
 					accountingInput.getUserInput(input);
 					accountings.add(accountingInput);
+					break;
 				}else if (kind == 3) {
 				accountingInput = new Transfar(AccountingKind.Transfar);
 				accountingInput.getUserInput(input);
 				accountings.add(accountingInput);
+				break;
 				}else {
 					System.out.println("Select num for Acounting kind between 1 and 3");
 				}	
 			}catch(InputMismatchException e) {
-				System.out.println("Please put an integer between 1 and 3!"); 
+				System.out.println("Please put an integer between 1~3!"); 
 				if (input.hasNext()) {
 					input.next();
 				}
@@ -84,7 +88,7 @@ public class AccountingManager implements Serializable{
 			AccountingInput accounting = accountings.get(findIndex(date));
 			System.out.println("the spending to be edited is " + date);
 			int n = -1;
-			while (n !=6) {
+			while (n !=5) {
 				showEditMenu();
 				n = input.nextInt();
 				switch(n) {
@@ -103,8 +107,10 @@ public class AccountingManager implements Serializable{
 				}case(4):{
 					System.out.print("Memo : ");
 					accounting.setMemo(input.next());
-				}case(5):{
-					break;}
+					break;
+				}default:{
+					break;
+				}
 				} //switch
 			}//while
 		}else {
@@ -128,6 +134,9 @@ public class AccountingManager implements Serializable{
 		for (int i=0; i<accountings.size(); i++) {
 			(accountings.get(i)).printInfo();}
 		}
+	public void setScanner(Scanner input) {
+		this.input = input;
+	}
 		
 	
 	public int findIndex(int date) {
@@ -138,6 +147,17 @@ public class AccountingManager implements Serializable{
 				break;}}
 		return idx;
 	}
+	
+	
+	public int size() {
+		return accountings.size();
+	}
+	
+	public AccountingInput get(int index) {
+		return (Accounting) accountings.get(index);
+	}
+	 
+	
 	public void showEditMenu() {
 		System.out.println("== Spending Info Edit Menu ==");
 		System.out.println("1. Edit date\n2. Edit amount\n3. "

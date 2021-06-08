@@ -11,14 +11,17 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
-public class AccountingAdder extends JFrame{
+public class AccountingAdder extends JPanel{
 	
-	public AccountingAdder() {
+	WindowFrame frame;
+	
+	public AccountingAdder(WindowFrame frame) {
+		
+		this.frame = frame;
         
 		JPanel panel = new JPanel();
 		panel.setLayout(new SpringLayout());
 		
-        
 		JLabel labelDate = new JLabel("Date: ", JLabel.TRAILING);
 		JTextField fieldDate = new JTextField(10);
 		labelDate.setLabelFor(fieldDate);
@@ -48,9 +51,8 @@ public class AccountingAdder extends JFrame{
 		
 		SpringUtilities.makeCompactGrid(panel, 5, 2, 6, 6, 6, 6);
 		
-		this.setSize(300, 300);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setContentPane(panel);
+
+		this.add(panel);
 		this.setVisible(true);
 		
 	}
