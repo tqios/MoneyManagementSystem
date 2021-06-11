@@ -1,4 +1,4 @@
-package listeners;
+package event;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,7 +18,11 @@ public class ButtonAddListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		JButton b = (JButton) e.getSource();
+		/*frame.getContentPane().removeAll();
+		frame.getContentPane().add(frame.getAccountingAdder());
+		frame.revalidate();
+		frame.repaint();*/
+
 		AccountingAdder adder = frame.getAccountingAdder();
 		frame.setupPanel(adder);
 	}

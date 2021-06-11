@@ -22,8 +22,8 @@ public class WindowFrame extends JFrame{
 		
 		this.accountingManager = accountingManager;
 		menuSelection = new MenuSelection(this);
-		accountingAdder = new AccountingAdder(this);
-		accountingsViewer = new AccountingsViewer(this, this.accountingManager = accountingManager);
+		accountingAdder = new AccountingAdder(this, this.accountingManager);
+		accountingsViewer = new AccountingsViewer(this, this.accountingManager);
 		
 		this.setupPanel(menuSelection);
 		

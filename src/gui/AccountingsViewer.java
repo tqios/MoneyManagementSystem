@@ -16,10 +16,13 @@ public class AccountingsViewer extends JPanel{
 	WindowFrame frame;
 	AccountingManager accountingManager;
 
-	public AccountingsViewer(WindowFrame frame, AccountingManager accountingManager)  {
-		
-		this.frame = frame;
+	public AccountingManager getAccountingManager() {
+		return accountingManager;
+	}
+
+	public void setAccountingManager(AccountingManager accountingManager) {
 		this.accountingManager = accountingManager;
+		this.removeAll();
 		
 		DefaultTableModel model = new DefaultTableModel();
 		model.addColumn("Date");
@@ -41,6 +44,15 @@ public class AccountingsViewer extends JPanel{
 		JScrollPane sp = new JScrollPane(table);
 		
 		this.add(sp);
+	}
+
+	public AccountingsViewer(WindowFrame frame, AccountingManager accountingManager)  {
+		
+		this.frame = frame;
+		this.accountingManager = accountingManager;
+		
+		
+		
 
 	}
 

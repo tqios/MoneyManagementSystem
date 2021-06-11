@@ -24,7 +24,15 @@ public class AccountingManager implements Serializable{
 	AccountingManager(Scanner input){
 		this.input = input;
 	}
-
+	public void addAccounting(int Date, int Amount, String Location, String Memo) {
+		AccountingInput accountingInput = new Credit(AccountingKind.Credit);
+		accountingInput.getUserInput(input);
+		accountings.add(accountingInput);
+	}
+	
+	public void addAccounting(AccountingInput accountinginput) {
+		accountings.add(accountinginput);
+	}
 	
 	public void addAccounting() {		
 		int kind = 0;

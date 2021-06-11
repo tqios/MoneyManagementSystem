@@ -11,13 +11,20 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
+import event.AccountingAdderCancelListener;
+import event.AccountingAdderListener;
+import manager.AccountingManager;
+
 public class AccountingAdder extends JPanel{
 	
 	WindowFrame frame;
 	
-	public AccountingAdder(WindowFrame frame) {
+	AccountingManager accountingmanager;
+	
+	public AccountingAdder(WindowFrame frame, AccountingManager accountingmanager) {
 		
 		this.frame = frame;
+		this.accountingmanager = accountingmanager;
         
 		JPanel panel = new JPanel();
 		panel.setLayout(new SpringLayout());
@@ -43,11 +50,18 @@ public class AccountingAdder extends JPanel{
 		JLabel labelMemo = new JLabel("Memo: ", JLabel.TRAILING);
 		JTextField fieldMemo = new JTextField(10);
 		labelDate.setLabelFor(fieldMemo);
+		
+		JButton saveButton = new JButton("save");
+		saveButton.addActionListener(new AccountingAdderListener(fieldDate, fieldAmount, fieldLocation, fieldMemo, accountingmanager));
+		
+		JButton cancelButton = new JButton("cancel");
+		cancelButton.addActionListener(new AccountingAdderCancelListener(frame));
+		
 		panel.add(labelMemo);
 		panel.add(fieldMemo);
 		
-		panel.add(new JButton("save"));
-		panel.add(new JButton("cancel"));
+		panel.add(saveButton);
+		panel.add(cancelButton);
 		
 		SpringUtilities.makeCompactGrid(panel, 5, 2, 6, 6, 6, 6);
 		
