@@ -39,6 +39,8 @@ public class AccountingAdderListener implements ActionListener {
 		accounting.setLocation(fieldLocation.getText());
 		accounting.setMemo(fieldMemo.getText());
 		accountingmanager.addAccounting(accounting);
+		putObject(accountingmanager, "accountingmanager.ser");
+		accounting.printInfo();
 	}
 	
 	public static void putObject(AccountingManager accountingManager, String filename) {
