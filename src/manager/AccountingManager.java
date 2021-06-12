@@ -72,10 +72,7 @@ public class AccountingManager implements Serializable{
 	
 	public void deleteAccounting() {
 		System.out.print("date+time(YYMMddhhmm) : ");
-		int date = input.nextInt();	
-		if (accounting == null) {
-			System.out.println("the spending has not been registered");
-			return;}
+		int date = input.nextInt();			
 		removefromAccounting(date);
 	}
 	
@@ -128,9 +125,6 @@ public class AccountingManager implements Serializable{
 	public void viewAccounting() {
 		System.out.print("date+time(YYMMddhhmm) : ");
 		int date = input.nextInt();	
-		if (accounting == null) {
-			System.out.println("the spending has not been registered");
-			return;}
 		if (findIndex(date) >= 0) {
 			Accounting income = (Accounting) accountings.get(findIndex(date));
 			income.printInfo();

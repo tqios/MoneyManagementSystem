@@ -18,11 +18,6 @@ public class ButtonAddListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		/*frame.getContentPane().removeAll();
-		frame.getContentPane().add(frame.getAccountingAdder());
-		frame.revalidate();
-		frame.repaint();*/
-
 		AccountingAdder adder = frame.getAccountingAdder();
 		frame.setupPanel(adder);
 	}

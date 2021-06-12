@@ -23,10 +23,6 @@ public class AccountingAdderCancelListener implements ActionListener {
 		frame.getContentPane().add(frame.getMenuSelection());
 		frame.revalidate();
 		frame.repaint();
-		
-		//JButton b = (JButton) e.getSource();
-		//AccountingAdder adder = frame.getAccountingAdder();
-		//frame.setupPanel(adder);
 	}
 
 }
